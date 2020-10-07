@@ -3,21 +3,33 @@
 <head>
     <title>News</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="description" content="Training with news">
-    <meta name="author" content="Mateo Velilla"> 
+    <meta name="author" content="Mateo Velilla">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <article>
         <header>
+            <div class="burger">
+                <a href="#" class="btn-menu">
+                    <span class="material-icons">
+                        menu
+                    </span>
+                </a>
+            </div>
             <nav>
                 <ul>
-                    <li class="regular-item"><img src="./assets/images/logo-1.svg" sizes="(max-width:500px) 25vw, 50vw" alt="News"/></li>
-                    <li class="regular-item">Sections</li>
-                    <li class="regular-item">Editorial</li>
-                    <li class="regular-item">Contact us</li>
-                    <li class="last-item">Contact us</li>
+                    <li><img src="./assets/images/logo-1.svg" sizes="(max-width:500px) 25vw, 50vw" alt="News"/></li>
+                    <li >Sections</li>
+                    <li >Editorial</li>
+                    <li >Contact us</li>
+                    <li class="content-avatar">
+                        <span class="avatar">js</span>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -26,3 +38,11 @@
     </article>
 </body>
 </html>
+<script>
+    const btn_menu = document.querySelector('a[class="btn-menu"]');
+    btn_menu.addEventListener('click', function() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('nav-active');
+    });
+
+</script>
