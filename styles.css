@@ -3,7 +3,7 @@
   padding: 0px;
   margin: 0px;
 }
-/* variables to colors */
+/* General Variables */
 :root {
   --body-color: rgba(242, 244, 248, 1);
   --fonts-color: rgba(29, 33, 33, 1);
@@ -13,6 +13,7 @@
   --welcome-color: rgba(223, 239, 253, 1);
   --grey-dark-1: rgba(75, 83, 83, 1);
   --light-silver: rgba(216, 216, 216, 1);
+  --height-nav: 5vh;
 }
 /* general CSS rules */
 body {
@@ -28,7 +29,7 @@ section {
 }
 /* nav css */
 header {
-  height: 5vh;
+  height: var(--height-nav);
   position: fixed;
   overflow: hidden;
   width: 100%;
@@ -87,7 +88,7 @@ nav ul li:last-child {
   display: flex;
   justify-content: center;
   font-size: 14px;
-  margin-top: calc(5vh + 25px);
+  margin-top: calc(var(--height-nav) + 25px);
 }
 .welcome div {
   width: 70vw;
@@ -135,7 +136,7 @@ nav ul li:last-child {
   line-height: 41px;
 }
 .title-top-news-without-welcome-section {
-  margin-top: calc(5vh + 25px);
+  margin-top: calc(var(--height-nav) + 25px);
 }
 .top-news {
   display: flex;
