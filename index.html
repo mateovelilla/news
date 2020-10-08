@@ -60,7 +60,81 @@
           <h2>Top news</h2>
         </div>
       </section>
-      <section></section>
+      <section class="top-news">
+        <div class="tops-news-container">
+          <div class="news-item">
+            <div class="news-item-image">
+              <img
+                src="https://www.etonline.com/sites/default/files/styles/max_1280x720/public/images/2020-10/gettyimages-635762173_0.jpg?h=b2d3ced3&itok=NB42Y_lU"
+                alt=""
+              />
+            </div>
+            <h3>
+              Eddie Van Halen's Brother Alex Remembers Late Rocker: See More
+              Tributes - Entertainment Tonight
+            </h3>
+            <p>
+              Legendary rock star and guitarist Eddie Van Halen died on Tuesday
+              after a lengthy battle with cancer. He was 65.\r\nEddie's son and
+              bandmate, Wolfgang -- whom he shared with
+              ex-wife Valerie Bertinelli … [+9480 chars]
+            </p>
+          </div>
+          <div class="news-item">
+            <div class="news-item-image">
+              <img
+                src="https://ichef.bbci.co.uk/news/1024/branded_news/E24B/production/_114813975_2_trump-biden_comp_getty.jpg"
+                alt=""
+              />
+            </div>
+            <h3>
+              Presidential debate: Trump refuses to take part in virtual TV
+              event - BBC News
+            </h3>
+            <p>
+              Image copyrightGetty ImagesImage caption\r\n The first debate
+              descended into insults and interruptions\r\nUS President Donald
+              Trump has refused to take part in a virtual TV debate with his
+              Democratic riv… [+5876 chars]
+            </p>
+          </div>
+          <div class="news-item">
+            <div class="news-item-image">
+              <img
+                src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/TLBANBQJMEI6XBYZBXYVTUKHSQ.jpg&w=1440"
+                alt=""
+              />
+            </div>
+            <h3>
+              Economic relief talks are back on, Trump asserts, two days after
+              he cut them off - The Washington Post
+            </h3>
+            <p>
+              He said he believes Pelosi wants it to happen, because its so good
+              for our country, we really need it.\r\nAs Washington fumbled
+              relief talks, economy's cracks deepened in recent months\r\nPelosi
+              and Trea… [+4366 chars]
+            </p>
+          </div>
+          <div class="news-item">
+            <div class="news-item-image">
+              <img
+                src="https://media.npr.org/assets/img/2020/10/08/091036_5day_cone_no_line_and_wind_wide-da33e57a1e5ee4898b49d6714a6bfcdd14827034.png?s=1400"
+                alt=""
+              />
+            </div>
+            <h3>
+              Hurricane Delta Forecast To Strengthen, Hit Louisiana Coast Friday
+              - NPR
+            </h3>
+            <p>
+              If ordered to evacuate by local officials, leave!\" the National
+              Weather Service office in New Orleans says. Delta's possible path
+              includes Cameron, La., which is recovering from Hurricane Laura.
+            </p>
+          </div>
+        </div>
+      </section>
       <footer></footer>
     </article>
   </body>
@@ -74,7 +148,10 @@
   //   TODO: Dismiss content with animation
   const btn_close = document.querySelector('button[class="btn-close"]');
   btn_close.addEventListener("click", function () {
+    console.log("Intento cerrar");
     const welcome = document.querySelector(".welcome");
+    const title_top_news = document.querySelector(".title-top-news");
+    title_top_news.classList.add("title-top-news-without-welcome-section");
     welcome.classList.add("welcome-inactive");
   });
 </script>
