@@ -178,6 +178,22 @@ nav ul li:last-child {
   letter-spacing: -0.09px;
   line-height: 22px;
 }
+.view-more-stories {
+  display: flex;
+  justify-content: center;
+  margin: 34px 0px 81px 0px;
+}
+.view-more-stories button {
+  color: var(--header-color);
+  height: 40px;
+  width: 171px;
+  border: 1px solid #0073e9;
+  border-radius: 2px;
+  background-color: #0073e9;
+}
+.subscribe img {
+  width: 100%;
+}
 @media (min-width: 600px) and (max-width: 1370px) {
   .top-news .tops-news-container {
     display: grid;
