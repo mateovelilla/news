@@ -99,6 +99,7 @@ nav ul li ul {
   background-color: var(--header-color);
   z-index: 1;
   right: -99999em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
 }
 nav ul li ul li {
   padding: 1vw;
@@ -400,6 +401,29 @@ nav ul li:hover > ul {
     display: flex;
     align-items: center;
     margin-left: 5%;
+  }
+  nav ul li ul {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--header-color);
+    z-index: 1;
+    left: -99999em;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  }
+  nav ul li ul li {
+    padding: 1vw;
+  }
+  nav ul li:hover > ul {
+    left: 0px;
+    margin-top: 15vh;
+    max-width: 50%;
+  }
+  nav ul li:last-child {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
   .content-avatar {
     display: flex;
