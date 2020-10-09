@@ -13,7 +13,7 @@
   --azure-radiance: rgba(0, 115, 233, 1);
   --botticelli: rgba(211, 219, 231, 1);
   --width-standard-content: 70vw;
-  --height-nav: 10vh;
+  --height-nav: 5vh;
 }
 /* general CSS rules */
 body {
@@ -27,6 +27,26 @@ body {
 section {
   margin: 25px 0px 0px 0px;
 }
+input {
+  box-sizing: border-box;
+  border: 1px solid var(--botticelli);
+  border-radius: 3px;
+  height: 35px;
+  width: 100%;
+}
+textarea {
+  box-sizing: border-box;
+  border: 1px solid var(--botticelli);
+  border-radius: 3px;
+  grid-column: 1.5;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
+nav a:hover {
+  border-bottom: 3px solid var(--azure-radiance);
+}
 /* Css rules to the Header section */
 header {
   height: var(--height-nav);
@@ -35,25 +55,32 @@ header {
   width: 100%;
   top: 0;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.18);
+  background-color: var(--header-color);
 }
 header nav {
   display: flex;
-  height: inherit;
   justify-content: center;
-  background-color: var(--header-color);
+  align-content: center;
+  width: 100%;
+  height: 100%;
 }
 nav ul {
   width: var(--width-standard-content);
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   list-style-type: none;
   flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
 }
 nav ul li {
   padding-right: 4%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.icon-menu {
+  line-height: 16px;
 }
 nav ul li:first-child {
   padding-right: 10%;
@@ -63,6 +90,23 @@ nav ul li:last-child {
   flex-grow: 1;
   justify-content: flex-end;
   flex-wrap: wrap;
+}
+
+nav ul li ul {
+  position: fixed;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: var(--header-color);
+  z-index: 1;
+  right: -99999em;
+}
+nav ul li ul li {
+  padding: 1vw;
+}
+nav ul li:hover > ul {
+  right: auto;
+  margin-top: 15vh;
+  max-width: 20%;
 }
 .content-avatar {
   display: flex;
@@ -217,20 +261,7 @@ nav ul li:last-child {
   color: var(--grey-dark-1);
   margin-bottom: 4.5px;
 }
-input {
-  box-sizing: border-box;
-  border: 1px solid var(--botticelli);
-  border-radius: 3px;
-  height: 35px;
-  width: 100%;
-}
-textarea {
-  box-sizing: border-box;
-  border: 1px solid var(--botticelli);
-  border-radius: 3px;
-  grid-column: 1.5;
-  width: 100%;
-}
+
 #first_name {
   grid-area: first_name;
 }
@@ -285,6 +316,8 @@ textarea {
   grid-template-columns: repeat(2, calc(30vw - 29px));
   column-gap: 5vh;
   row-gap: 46px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+
   grid-template-areas:
     "first_name last_name"
     "email phone_number"
@@ -333,7 +366,7 @@ textarea {
 }
 @media (max-width: 600px) {
   header {
-    height: 100%;
+    height: var(--height-nav);
   }
   .burger {
     width: 100%;
@@ -341,20 +374,15 @@ textarea {
   }
   .burger .btn-menu {
     display: block;
-    padding: 20px;
+    padding: 22px;
     background-color: var(--header-color);
-    box-sizing: border-box;
-    box-shadow: 0 2px 2px 0 var(--box-shadows);
   }
   .burger .btn-menu span {
     color: var(--fonts-color);
   }
   header nav {
-    margin: 0px;
-    padding: 0px;
     background-color: var(--header-color);
-    width: 80%;
-    height: 100%;
+    width: 70vw;
     position: fixed;
     transition: all 300ms;
     left: -100%;
@@ -362,20 +390,16 @@ textarea {
   }
   header nav ul {
     list-style-type: none;
-    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    margin: 0px;
-    padding: 0px;
+    flex-direction: column;
   }
-  header nav ul li {
-    display: block;
-    width: 94%;
-    padding-left: 6%;
-    padding-bottom: 3%;
-    padding-top: 3%;
+  nav ul li {
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
   }
   .content-avatar {
     display: flex;
