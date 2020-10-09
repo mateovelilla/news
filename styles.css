@@ -1,8 +1,5 @@
 /* Reset Css */
-* {
-  padding: 0px;
-  margin: 0px;
-}
+@import "./reset.css";
 /* General Variables */
 :root {
   --body-color: rgba(242, 244, 248, 1);
@@ -13,7 +10,9 @@
   --welcome-color: rgba(223, 239, 253, 1);
   --grey-dark-1: rgba(75, 83, 83, 1);
   --light-silver: rgba(216, 216, 216, 1);
-  --height-nav: 5vh;
+  --azure-radiance: rgba(0, 115, 233, 1);
+  --width-standard-content: 70vw;
+  --height-nav: 10vh;
 }
 /* general CSS rules */
 body {
@@ -27,23 +26,23 @@ body {
 section {
   margin: 25px 0px 0px 0px;
 }
-/* nav css */
+/* Css rules to the Header section */
 header {
   height: var(--height-nav);
   position: fixed;
   overflow: hidden;
   width: 100%;
   top: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.18);
 }
 header nav {
   display: flex;
   height: inherit;
   justify-content: center;
   background-color: var(--header-color);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.18);
 }
 nav ul {
-  width: 70vw;
+  width: var(--width-standard-content);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -83,7 +82,8 @@ nav ul li:last-child {
 .burger {
   display: none;
 }
-/* Welcome section  */
+
+/* Css rules to the Welcome section */
 .welcome {
   display: flex;
   justify-content: center;
@@ -91,7 +91,7 @@ nav ul li:last-child {
   margin-top: calc(var(--height-nav) + 25px);
 }
 .welcome div {
-  width: 70vw;
+  width: var(--width-standard-content);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,7 +121,8 @@ nav ul li:last-child {
 .welcome-inactive {
   display: none;
 }
-/* title "Top News" */
+
+/* Css rules to the title-top-news section */
 .title-top-news {
   display: flex;
   justify-content: center;
@@ -129,7 +130,7 @@ nav ul li:last-child {
 }
 .title-top-news div {
   display: flex;
-  width: 70vw;
+  width: var(--width-standard-content);
   align-items: center;
   font-size: 30px;
   letter-spacing: -0.16px;
@@ -146,7 +147,7 @@ nav ul li:last-child {
 
 .top-news .tops-news-container {
   display: grid;
-  width: 70vw;
+  width: var(--width-standard-content);
   grid-template-columns: repeat(2, 33vw);
   column-gap: 4vw;
   row-gap: 110px;
@@ -188,18 +189,30 @@ nav ul li:last-child {
   color: var(--header-color);
   height: 40px;
   width: 171px;
-  border: 1px solid #0073e9;
+  border: 1px solid var(--azure-radiance);
   border-radius: 2px;
-  background-color: #0073e9;
+  background-color: var(--azure-radiance);
 }
 .subscribe img {
   width: 100%;
 }
+.title-contact-us {
+  font-size: 30px;
+  letter-spacing: -0.16px;
+  line-height: 41px;
+  text-align: center;
+  background-color: inherit;
+  margin: 63px 0px 23px;
+  display: flex;
+  justify-content: center;
+}
+.title-contact-us form {
+}
 @media (min-width: 600px) and (max-width: 1370px) {
   .top-news .tops-news-container {
     display: grid;
-    width: 70vw;
-    grid-template-columns: 70vw;
+    width: var(--width-standard-content);
+    grid-template-columns: var(--width-standard-content);
     column-gap: 0px;
   }
 
@@ -210,7 +223,7 @@ nav ul li:last-child {
   }
   .top-news .tops-news-container {
     display: grid;
-    width: 70vw;
+    width: var(--width-standard-content);
     grid-template-columns: 100%;
     column-gap: 10vw;
     row-gap: 110px;
@@ -299,8 +312,8 @@ nav ul li:last-child {
   }
   .top-news .tops-news-container {
     display: grid;
-    width: 70vw;
-    grid-template-columns: 70vw;
+    width: var(--width-standard-content);
+    grid-template-columns: var(--width-standard-content);
     column-gap: 0px;
   }
 
@@ -311,7 +324,7 @@ nav ul li:last-child {
   }
   .top-news .tops-news-container {
     display: grid;
-    width: 70vw;
+    width: var(--width-standard-content);
     grid-template-columns: 100%;
     column-gap: 10vw;
     row-gap: 110px;
@@ -331,6 +344,6 @@ nav ul li:last-child {
     text-align: center;
   }
   .news-item-image img {
-    width: 100%;
+    width: 60%;
   }
 }
