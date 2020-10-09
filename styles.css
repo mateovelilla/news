@@ -38,7 +38,6 @@ textarea {
   box-sizing: border-box;
   border: 1px solid var(--botticelli);
   border-radius: 3px;
-  grid-column: 1.5;
   width: 100%;
 }
 a {
@@ -327,7 +326,7 @@ nav ul li:hover > ul {
     "submit submit";
 }
 
-@media (min-width: 600px) and (max-width: 1370px) {
+@media (max-width: 1370px) {
   .top-news .tops-news-container {
     display: grid;
     width: var(--width-standard-content);
