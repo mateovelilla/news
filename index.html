@@ -93,82 +93,10 @@
         </div>
       </section>
       <section class="top-news">
-        <div class="tops-news-container">
-          <div class="news-item">
-            <div class="news-item-image">
-              <img
-                src="https://www.etonline.com/sites/default/files/styles/max_1280x720/public/images/2020-10/gettyimages-635762173_0.jpg?h=b2d3ced3&itok=NB42Y_lU"
-                alt=""
-              />
-            </div>
-            <h3>
-              Eddie Van Halen's Brother Alex Remembers Late Rocker: See More
-              Tributes - Entertainment Tonight
-            </h3>
-            <p>
-              Legendary rock star and guitarist Eddie Van Halen died on Tuesday
-              after a lengthy battle with cancer. He was 65.\r\nEddie's son and
-              bandmate, Wolfgang -- whom he shared with
-              ex-wife Valerie Bertinelli … [+9480 chars]
-            </p>
-          </div>
-          <div class="news-item">
-            <div class="news-item-image">
-              <img
-                src="https://ichef.bbci.co.uk/news/1024/branded_news/E24B/production/_114813975_2_trump-biden_comp_getty.jpg"
-                alt=""
-              />
-            </div>
-            <h3>
-              Presidential debate: Trump refuses to take part in virtual TV
-              event - BBC News
-            </h3>
-            <p>
-              Image copyrightGetty ImagesImage caption\r\n The first debate
-              descended into insults and interruptions\r\nUS President Donald
-              Trump has refused to take part in a virtual TV debate with his
-              Democratic riv… [+5876 chars]
-            </p>
-          </div>
-          <div class="news-item">
-            <div class="news-item-image">
-              <img
-                src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/TLBANBQJMEI6XBYZBXYVTUKHSQ.jpg&w=1440"
-                alt=""
-              />
-            </div>
-            <h3>
-              Economic relief talks are back on, Trump asserts, two days after
-              he cut them off - The Washington Post
-            </h3>
-            <p>
-              He said he believes Pelosi wants it to happen, because its so good
-              for our country, we really need it.\r\nAs Washington fumbled
-              relief talks, economy's cracks deepened in recent months\r\nPelosi
-              and Trea… [+4366 chars]
-            </p>
-          </div>
-          <div class="news-item">
-            <div class="news-item-image">
-              <img
-                src="https://media.npr.org/assets/img/2020/10/08/091036_5day_cone_no_line_and_wind_wide-da33e57a1e5ee4898b49d6714a6bfcdd14827034.png?s=1400"
-                alt=""
-              />
-            </div>
-            <h3>
-              Hurricane Delta Forecast To Strengthen, Hit Louisiana Coast Friday
-              - NPR
-            </h3>
-            <p>
-              If ordered to evacuate by local officials, leave!\" the National
-              Weather Service office in New Orleans says. Delta's possible path
-              includes Cameron, La., which is recovering from Hurricane Laura.
-            </p>
-          </div>
-        </div>
+        <div class="tops-news-container"></div>
       </section>
       <section class="view-more-stories">
-        <button>View more stories</button>
+        <button class="btn_view_more_stories">View more stories</button>
       </section>
       <section class="subscribe">
         <img src="./assets/images/suscribe.jpg" alt="" />
@@ -210,19 +138,61 @@
     </article>
   </body>
 </html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-  const btn_menu = document.querySelector('a[class="btn-menu"]');
-  btn_menu.addEventListener("click", function () {
-    const nav = document.querySelector("nav");
-    nav.classList.toggle("nav-active");
-  });
+  let page = 1;
+  const pageSize = 4,
+    top_news = document.querySelector(".tops-news-container"),
+    btn_menu = document.querySelector('a[class="btn-menu"]'),
+    btn_more_stories = document.querySelector(".btn_view_more_stories"),
+    apikey = "3e51a48d6496492389f2505c5e88bf36",
+    btn_close = document.querySelector('button[class="btn-close"]'),
+    nav = document.querySelector("nav"),
+    welcome = document.querySelector(".welcome"),
+    title_top_news = document.querySelector(".title-top-news"),
+    news_template = (urlToImage, title, content) => {
+      const container = document.createElement("div");
+      const content_img = document.createElement("div");
+      const img = document.createElement("img");
+      const title_h3 = document.createElement("h3");
+      const content_p = document.createElement("p");
+      container.classList.add("news-item");
+      content_img.classList.add("news-item-image");
+      title_h3.textContent = title;
+      content_p.textContent = content;
+      img.src = urlToImage ? urlToImage : "./assets/images/img-not-found.png";
+      content_img.appendChild(img);
+      container.appendChild(content_img);
+      container.appendChild(title_h3);
+      container.appendChild(content_p);
+      return container;
+    },
+    viewMoreStories = async () => {
+      const myHeaders = new Headers();
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+      const response = await fetch(
+        `http://newsapi.org/v2/top-headlines?country=us&apiKey=${apikey}&pageSize=${pageSize}&page=${page}`,
+        requestOptions
+      );
+      const { articles } = await response.json();
+      articles.forEach((article) => {
+        const { urlToImage, title, content } = article;
+        const template = news_template(urlToImage, title, content);
+        top_news.appendChild(template);
+      });
+      page++;
+    };
+  // Events listeners
+  btn_menu.addEventListener("click", () => nav.classList.toggle("nav-active"));
   //   TODO: Dismiss content with animation
-  const btn_close = document.querySelector('button[class="btn-close"]');
   btn_close.addEventListener("click", function () {
-    console.log("Intento cerrar");
-    const welcome = document.querySelector(".welcome");
-    const title_top_news = document.querySelector(".title-top-news");
     title_top_news.classList.add("title-top-news-without-welcome-section");
     welcome.classList.add("welcome-inactive");
   });
+  btn_more_stories.addEventListener("click", viewMoreStories);
+  viewMoreStories();
 </script>
