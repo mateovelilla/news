@@ -24,7 +24,6 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   color: var(--fonts-color);
-  margin: 0;
   background-color: var(--body-color);
   letter-spacing: -0.09px;
 }
@@ -47,7 +46,7 @@ textarea {
 a {
   text-decoration: none;
 }
-nav a:hover {
+nav li:hover {
   border-bottom: 3px solid var(--azure-radiance);
 }
 
@@ -116,16 +115,20 @@ nav ul li ul {
   align-items: flex-start;
   background-color: var(--header-color);
   z-index: 1;
-  right: -99999em;
+  right: -100%;
   box-shadow: 0 2px 4px 0 var(--standard-shadow);
 }
 nav ul li ul li {
   width: 100%;
   padding: 1vw;
 }
+nav ul li ul li a span {
+  display: flex;
+  line-height: 22px;
+}
 nav ul li:hover > ul {
   right: auto;
-  margin-top: 15vh;
+  margin-top: calc(var(--height-nav) + 10%);
   max-width: 20%;
 }
 
@@ -448,7 +451,10 @@ nav ul li:hover > ul {
     width: 100%;
     display: flex;
     align-items: center;
-    margin-left: 5%;
+    padding-right: 0px;
+  }
+  nav ul .logo {
+    padding-right: 0px;
   }
   nav ul li ul {
     position: relative;
@@ -465,7 +471,7 @@ nav ul li:hover > ul {
   nav ul li:hover > ul {
     left: 0px;
     margin-top: 15vh;
-    max-width: 50%;
+    max-width: 80%;
   }
   nav ul li:last-child {
     display: flex;

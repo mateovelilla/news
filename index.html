@@ -39,32 +39,23 @@
             </li>
             <li>
               <a href="#">Sections </a>
-              <span class="material-icons icon-menu">keyboard_arrow_down</span>
+              <span class="material-icons">keyboard_arrow_down</span>
               <ul>
                 <li>
-                  <a href="#"
-                    ><span class="material-icons icon-menu"> sports </span
-                    >Sports</a
-                  >
+                  <span class="material-icons"> sports </span>
+                  <a href="#">Sports</a>
                 </li>
                 <li>
-                  <a href="#"
-                    ><span class="material-icons icon-menu"> casino </span
-                    >Entertainment</a
-                  >
+                  <span class="material-icons"> casino </span>
+                  <a href="#">Entertainment</a>
                 </li>
                 <li>
-                  <a href="#"
-                    ><span class="material-icons icon-menu"> attach_money </span
-                    >Economics</a
-                  >
+                  <span class="material-icons"> attach_money </span>
+                  <a href="#">Economics</a>
                 </li>
                 <li>
-                  <a href="#"
-                    ><span class="material-icons icon-menu">
-                      developer_board </span
-                    >Technology</a
-                  >
+                  <span class="material-icons">developer_board </span>
+                  <a href="#">Technology</a>
                 </li>
               </ul>
             </li>
@@ -162,7 +153,6 @@
     </article>
   </body>
 </html>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
   let page = 1;
   const pageSize = 4,
@@ -199,20 +189,17 @@
       return container;
     },
     viewMoreStories = async () => {
-      const response = await axios.get(
-        `https://newsapi.org/v2/top-headlines`, {
-          headers:{
-            "Content-Type":"application/json"
-          },
-          params: {
-            "country":"us",
-            "apiKey": apikey,
-            "pageSize": pageSize,
-            "page":page
-          }
-        }
-      );
-      const { data:{articles} } = await response;
+
+      const headers = new Headers();
+      headers.append("Accept","*/*")
+      headers.append("Host","newsapi.org")
+      const requestOptions = {
+        method: 'GET',
+        headers,
+        redirect: 'follow'
+      };
+      const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apikey}&page=${page}&pageSize=${pageSize}`, requestOptions)
+      const { articles } =  await response.json();
       articles.forEach((article) => {
         const { urlToImage, title, content } = article;
         const template = news_template(urlToImage, title, content);
