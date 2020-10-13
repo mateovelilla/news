@@ -200,7 +200,14 @@
     },
     viewMoreStories = async () => {
       const response = await axios.get(
-        `http://newsapi.org/v2/top-headlines/?country=us&apiKey=${apikey}&pageSize=${pageSize}&page=${page}`
+        `http://newsapi.org/v2/top-headlines/`, {
+          params: {
+            "country":"us",
+            "apiKey": apikey,
+            "pageSize": pageSize,
+            "page":page
+          }
+        }
       );
       const { data:{articles} } = await response;
       articles.forEach((article) => {
