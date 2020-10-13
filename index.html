@@ -198,11 +198,16 @@
       return container;
     },
     viewMoreStories = async () => {
-      const myHeaders = new Headers();
+      const headers = new Headers();
+      headers.append("Access-Control-Allow-Origin", "*")
+      headers.append("Access-Control-Request-Method", "*")
+      headers.append("Access-Control-Allow-Methods","GET,HEAD,OPTIONS,POST,PUT")
+      headers.append("Content-Type","application/json")
+      headers.append("Access-Control-Allow-Credentials","true")
+      headers.append("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Authorization")
       const requestOptions = {
         method: "GET",
-        headers: myHeaders,
-        redirect: "follow",
+        headers,
       };
       const response = await fetch(
         `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apikey}&pageSize=${pageSize}&page=${page}`,
