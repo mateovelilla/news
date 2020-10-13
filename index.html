@@ -162,7 +162,6 @@
     </article>
   </body>
 </html>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
   let page = 1;
   const pageSize = 4,
@@ -199,20 +198,15 @@
       return container;
     },
     viewMoreStories = async () => {
-      const response = await axios.get(
-        `https://newsapi.org/v2/top-headlines`, {
-          headers:{
-            "Content-Type":"application/json"
-          },
-          params: {
-            "country":"us",
-            "apiKey": apikey,
-            "pageSize": pageSize,
-            "page":page
-          }
-        }
-      );
-      const { data:{articles} } = await response;
+
+      const myHeaders = new Headers();
+      const requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+      const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apikey}&page=${page}&pageSize=${pageSize}`, requestOptions)
+      const { articles } =  await response.json();
       articles.forEach((article) => {
         const { urlToImage, title, content } = article;
         const template = news_template(urlToImage, title, content);
