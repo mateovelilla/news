@@ -202,9 +202,7 @@
       const response = await axios.get(
         `https://newsapi.org/v2/top-headlines`, {
           headers:{
-            "Access-Control-Allow-Headers":"*",
-            "Content-Type":"application/json",
-            "Access-Control-Allow-Origin":"https://newsapi.org"
+            "Content-Type":"application/json"
           },
           params: {
             "country":"us",
