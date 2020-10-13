@@ -30,7 +30,7 @@
         </div>
         <nav>
           <ul>
-            <li>
+            <li class="logo">
               <img
                 src="./assets/images/logo.svg"
                 sizes="(max-width:500px) 25vw, 50vw"
@@ -53,14 +53,12 @@
                     >Entertainment</a
                   >
                 </li>
-
                 <li>
                   <a href="#"
                     ><span class="material-icons icon-menu"> attach_money </span
                     >Economics</a
                   >
                 </li>
-
                 <li>
                   <a href="#"
                     ><span class="material-icons icon-menu">
@@ -105,29 +103,30 @@
         <h3>Contact Us</h3>
       </section>
       <section class="form-contact-us">
-        <form action="">
+        <form action="#" id="contact-form">
           <div id="first_name">
             <h4>First name</h4>
-            <input type="text" />
+            <input type="text" name="first_name" required/>
           </div>
           <div id="last_name">
             <h4>Last name</h4>
-            <input type="text" id="last_name" />
+            <input type="text" id="last_name" name="last_name" required/>
           </div>
           <div id="email">
             <h4>Email</h4>
-            <input type="text" />
+            <input type="email" name="email" required/>
           </div>
+          <!-- https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_tel -->
           <div id="phone_number">
             <h4>Phone number</h4>
-            <input type="text" id="phone_number" />
+            <input type="tel" id="phone" name="phone" placeholder="123-456-67-89" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required/>
           </div>
-          <div id="description">
+          <div id="description" >
             <h4>Description</h4>
-            <textarea></textarea>
+            <textarea name="description" required></textarea>
           </div>
           <div id="check_send_email">
-            <input type="checkbox" checked="checked" />
+            <input type="checkbox" checked="checked" required/>
             Send me emails about breaking news and promotions.
           </div>
           <div id="submit">
@@ -135,24 +134,52 @@
           </div>
         </form>
       </section>
+      <!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h4>Information to send</h4>
+          <div class="general-information">
+            <div>
+              <span>Name:</span>
+              <span id="modal_name"></span>
+            </div>
+            <div>
+              <span>Email:</span>
+              <span id="modal_email"></span>
+            </div>
+            <div>
+              <span>Phone Number:</span>
+              <span id="modal_phone_number"></span>
+            </div>
+            <div>
+              <span>Description:</span>
+              <span id="modal_description"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
   </body>
 </html>
-<script
-  type="text/javascript"
-  src="https://unpkg.com/axios/dist/axios.min.js"
-></script>
 <script type="text/javascript">
   let page = 1;
   const pageSize = 4,
     top_news = document.querySelector(".tops-news-container"),
     btn_menu = document.querySelector('a[class="btn-menu"]'),
     btn_more_stories = document.querySelector(".btn_view_more_stories"),
-    apikey = "3e51a48d6496492389f2505c5e88bf36",
+    apikey = "3e51a48d6496492389f2505c5e88bf36", // TODO: Migrate to a environment file
     btn_close = document.querySelector('button[class="btn-close"]'),
     nav = document.querySelector("nav"),
     welcome = document.querySelector(".welcome"),
     title_top_news = document.querySelector(".title-top-news"),
+    contact_form = document.querySelector("#contact-form"),
+    modal = document.getElementById("modal"),
+    modal_close = document.getElementsByClassName("close")[0],
+    modal_name = document.getElementById("modal_name"),
+    modal_email = document.getElementById("modal_email"),
+    modal_phone_number = document.getElementById("modal_phone_number"),
+    modal_description = document.getElementById("modal_description"),
     news_template = (urlToImage, title, content) => {
       const container = document.createElement("div");
       const content_img = document.createElement("div");
@@ -197,5 +224,26 @@
     welcome.classList.add("welcome-inactive");
   });
   btn_more_stories.addEventListener("click", viewMoreStories);
+  modal_close.addEventListener("click",()=> modal.style.display = "none")
+  contact_form.addEventListener("submit",(e) => {
+    e.preventDefault()
+    const [first_name,last_name,email,phone_number,description,checkbox] = contact_form
+    // Validation regex with: https://regex101.com/
+    // https://www.w3resource.com/javascript/form/email-validation.php
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value)) {
+      // https://www.w3resource.com/javascript/form/phone-no-validation.php
+      if(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{2})[-. ]?([0-9]{2})$/.test(phone_number.value)) {
+        modal.style.display = "block";
+        modal_name.textContent = `${first_name.value} ${last_name.value}`
+        modal_email.textContent = email.value
+        modal_phone_number.textContent = phone_number.value
+        modal_description.textContent = description.value
+      }else {
+        alert("Phone number is not valid!")
+      }
+    } else {
+      alert("Email is not valid!")
+    }
+  })
   viewMoreStories();
 </script>
