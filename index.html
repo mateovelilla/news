@@ -205,7 +205,7 @@
         redirect: "follow",
       };
       const response = await fetch(
-        `http://newsapi.org/v2/top-headlines?country=us&apiKey=${apikey}&pageSize=${pageSize}&page=${page}`,
+        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apikey}&pageSize=${pageSize}&page=${page}`,
         requestOptions
       );
       const { articles } = await response.json();
