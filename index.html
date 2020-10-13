@@ -199,11 +199,8 @@
       return container;
     },
     viewMoreStories = async () => {
-      axios.defaults.baseURL = 'https://newsapi.org/v2/top-headlines';
-      axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-      axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
       const response = await axios.get(
-        `/?country=us&apiKey=${apikey}&pageSize=${pageSize}&page=${page}`
+        `https://newsapi.org/v2/top-headlines/?country=us&apiKey=${apikey}&pageSize=${pageSize}&page=${page}`
       );
       const { data:{articles} } = await response;
       articles.forEach((article) => {
