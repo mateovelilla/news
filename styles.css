@@ -1,19 +1,23 @@
 /* Reset Css */
 @import "./reset.css";
-/* General Variables */
+
+/** 
+* General Variables
+* Names for the colors: https://chir.ag/projects/name-that-color 
+**/
 :root {
-  --body-color: rgba(242, 244, 248, 1);
-  --fonts-color: rgba(29, 33, 33, 1);
-  --header-color: rgba(255, 255, 255, 1);
-  --box-shadows: rgba(0, 0, 0, 0.18);
   --avatar-color: rgba(145, 0, 173, 1);
-  --welcome-color: rgba(223, 239, 253, 1);
-  --grey-dark-1: rgba(75, 83, 83, 1);
-  --light-silver: rgba(216, 216, 216, 1);
   --azure-radiance: rgba(0, 115, 233, 1);
+  --body-color: rgba(242, 244, 248, 1);
   --botticelli: rgba(211, 219, 231, 1);
-  --width-standard-content: 70vw;
+  --fonts-color: rgba(29, 33, 33, 1);
+  --grey-dark-1: rgba(75, 83, 83, 1);
+  --header-color: rgba(255, 255, 255, 1);
   --height-nav: 5vh;
+  --light-silver: rgba(216, 216, 216, 1);
+  --standard-shadow: rgba(0, 0, 0, 0.18);
+  --welcome-color: rgba(223, 239, 253, 1);
+  --width-standard-content: 70vw;
 }
 /* general CSS rules */
 body {
@@ -46,6 +50,7 @@ a {
 nav a:hover {
   border-bottom: 3px solid var(--azure-radiance);
 }
+
 /* Css rules to the Header section */
 header {
   height: var(--height-nav);
@@ -53,7 +58,7 @@ header {
   overflow: hidden;
   width: 100%;
   top: 0;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 2px 0 var(--standard-shadow);
   background-color: var(--header-color);
 }
 header nav {
@@ -81,16 +86,30 @@ nav ul li {
 .icon-menu {
   line-height: 16px;
 }
-nav ul li:first-child {
+/* CSS for the logo "News" */
+nav ul .logo {
   padding-right: 10%;
 }
-nav ul li:last-child {
+/* CSS for the avatar */
+nav ul .content-avatar {
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
+  align-items: center;
   flex-wrap: wrap;
+  padding: 0px;
 }
-
+.content-avatar span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 11px;
+  background: var(--avatar-color);
+  color: var(--header-color);
+}
 nav ul li ul {
   position: fixed;
   flex-direction: column;
@@ -98,9 +117,10 @@ nav ul li ul {
   background-color: var(--header-color);
   z-index: 1;
   right: -99999em;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 4px 0 var(--standard-shadow);
 }
 nav ul li ul li {
+  width: 100%;
   padding: 1vw;
 }
 nav ul li:hover > ul {
@@ -108,27 +128,12 @@ nav ul li:hover > ul {
   margin-top: 15vh;
   max-width: 20%;
 }
-.content-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0px;
-}
-.content-avatar span {
-  width: 25px;
-  height: 25px;
-  padding-top: 2px;
-  border-radius: 50%;
-  font-size: 11px;
-  text-align: center;
-  background: var(--avatar-color);
-  color: var(--header-color);
-}
+
 .burger {
   display: none;
 }
 
-/* Css rules to the Welcome section */
+/* CSS rules for the Welcome section */
 .welcome {
   display: flex;
   justify-content: center;
@@ -189,7 +194,6 @@ nav ul li:hover > ul {
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .top-news .tops-news-container {
   display: grid;
   width: var(--width-standard-content);
@@ -261,7 +265,6 @@ nav ul li:hover > ul {
   color: var(--grey-dark-1);
   margin-bottom: 4.5px;
 }
-
 #first_name {
   grid-area: first_name;
 }
@@ -317,7 +320,6 @@ nav ul li:hover > ul {
   column-gap: 5vh;
   row-gap: 46px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
-
   grid-template-areas:
     "first_name last_name"
     "email phone_number"
@@ -333,7 +335,6 @@ nav ul li:hover > ul {
     grid-template-columns: var(--width-standard-content);
     column-gap: 0px;
   }
-
   .top-news {
     display: flex;
     justify-content: center;
@@ -367,6 +368,13 @@ nav ul li:hover > ul {
 @media (max-width: 600px) {
   header {
     height: var(--height-nav);
+  }
+  h3 {
+    font-weight: 600px;
+    padding: 3%;
+  }
+  p {
+    padding: 4%;
   }
   .burger {
     width: 100%;
