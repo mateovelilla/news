@@ -191,12 +191,13 @@
     viewMoreStories = async () => {
 
       const headers = new Headers();
+      headers.append('X-Api-Key',apikey)
       const requestOptions = {
         method: 'GET',
         headers,
         redirect: 'follow'
       };
-      const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apikey}&page=${page}&pageSize=${pageSize}`, requestOptions)
+      const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&page=${page}&pageSize=${pageSize}`, requestOptions)
       const { articles } =  await response.json();
       articles.forEach((article) => {
         const { urlToImage, title, content } = article;
