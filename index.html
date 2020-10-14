@@ -97,27 +97,34 @@
         <form action="#" id="contact-form">
           <div id="first_name">
             <h4>First name</h4>
-            <input type="text" name="first_name" required/>
+            <input type="text" name="first_name" required />
           </div>
           <div id="last_name">
             <h4>Last name</h4>
-            <input type="text" id="last_name" name="last_name" required/>
+            <input type="text" id="last_name" name="last_name" required />
           </div>
           <div id="email">
             <h4>Email</h4>
-            <input type="email" name="email" required/>
+            <input type="email" name="email" required />
           </div>
           <!-- https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_tel -->
           <div id="phone_number">
             <h4>Phone number</h4>
-            <input type="tel" id="phone" name="phone" placeholder="123-456-67-89" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required/>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="123-456-67-89"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
+              required
+            />
           </div>
-          <div id="description" >
+          <div id="description">
             <h4>Description</h4>
             <textarea name="description" required></textarea>
           </div>
           <div id="check_send_email">
-            <input type="checkbox" checked="checked" required/>
+            <input type="checkbox" checked="checked" required />
             Send me emails about breaking news and promotions.
           </div>
           <div id="submit">
@@ -215,26 +222,41 @@
     welcome.classList.add("welcome-inactive");
   });
   btn_more_stories.addEventListener("click", viewMoreStories);
-  modal_close.addEventListener("click",()=> modal.style.display = "none")
-  contact_form.addEventListener("submit",(e) => {
-    e.preventDefault()
-    const [first_name,last_name,email,phone_number,description,checkbox] = contact_form
+  modal_close.addEventListener("click", () => (modal.style.display = "none"));
+  contact_form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const [
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      description,
+      checkbox,
+    ] = contact_form;
     // Validation regex with: https://regex101.com/
     // https://www.w3resource.com/javascript/form/email-validation.php
-    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value)) {
+    if (
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        email.value
+      )
+    ) {
       // https://www.w3resource.com/javascript/form/phone-no-validation.php
-      if(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{2})[-. ]?([0-9]{2})$/.test(phone_number.value)) {
+      if (
+        /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{2})[-. ]?([0-9]{2})$/.test(
+          phone_number.value
+        )
+      ) {
         modal.style.display = "block";
-        modal_name.textContent = `${first_name.value} ${last_name.value}`
-        modal_email.textContent = email.value
-        modal_phone_number.textContent = phone_number.value
-        modal_description.textContent = description.value
-      }else {
-        alert("Phone number is not valid!")
+        modal_name.textContent = `${first_name.value} ${last_name.value}`;
+        modal_email.textContent = email.value;
+        modal_phone_number.textContent = phone_number.value;
+        modal_description.textContent = description.value;
+      } else {
+        alert("Phone number is not valid!");
       }
     } else {
-      alert("Email is not valid!")
+      alert("Email is not valid!");
     }
-  })
+  });
   viewMoreStories();
 </script>
