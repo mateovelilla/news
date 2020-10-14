@@ -1,0 +1,230 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+  * General variables
+  * Names for the colors: https://chir.ag/projects/name-that-color 
+  **/
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  color: #1d2121;
+  background-color: #f2f4f8;
+  letter-spacing: -0.09px;
+}
+
+section {
+  margin: 25px 0px 0px 0px;
+}
+
+input, textarea {
+  box-sizing: border-box;
+  border: 1px solid #d3dbe7;
+  border-radius: 3px;
+  height: 35px;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  height: 5vh;
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  top: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.18);
+  background-color: white;
+}
+header .burger {
+  display: none;
+}
+header nav {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+}
+header nav ul {
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+header nav ul li {
+  padding-right: 4%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+header nav ul li ul {
+  position: fixed;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  z-index: 1;
+  right: -100%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+}
+header nav ul .logo {
+  padding-right: 10%;
+}
+header nav ul .content-avatar {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+header nav ul .content-avatar span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 11px;
+  background: #9100ad;
+  color: white;
+}
+
+/*# sourceMappingURL=main.css.map */

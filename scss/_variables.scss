@@ -1,0 +1,28 @@
+/**
+  * General variables
+  * Names for the colors: https://chir.ag/projects/name-that-color 
+  **/
+
+  //  ------ COLORS -------
+  $avatar-color: rgba(145, 0, 173, 1);
+  $azure-radiance: rgba(0, 115, 233, 1);
+  $body-color: rgba(242, 244, 248, 1);
+  $botticelli: rgba(211, 219, 231, 1);
+  $fonts-color: rgba(29, 33, 33, 1);
+  $grey-dark-1: rgba(75, 83, 83, 1);
+  $header-color: rgba(255, 255, 255, 1);
+  $light-silver: rgba(216, 216, 216, 1);
+  $standard-shadow: rgba(0, 0, 0, 0.18);
+  $welcome-color: rgba(223, 239, 253, 1);
+  // ------ SIZES -------
+  $nav-height: 5vh;
+  $width-standard-content: 70vw;
+  // ------ FONTS -------
+  $text-font: "Open Sans", sans-serif;
+  $text-font-size: 16px;
+  $text-font-spacing: -0.09px;
+  // ------ INPUTS -------
+  $input-border: 1px solid $botticelli;
+  $input-width: 100%;
+  $input-height: 35px;
+  $input-border-radius: 3px;
