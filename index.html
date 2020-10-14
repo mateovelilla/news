@@ -196,7 +196,7 @@
       return container;
     },
     viewMoreStories = async () => {
-      let url = new URL("http://newsapi.org/v2/top-headlines"),
+      let url = new URL("https://newsapi.org/v2/top-headlines"),
         params = { country: "us", page: page, pageSize: pageSize };
       Object.keys(params).forEach((key) =>
         url.searchParams.append(key, params[key])
