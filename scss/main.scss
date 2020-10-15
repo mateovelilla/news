@@ -1,13 +1,21 @@
 @import "reset";
 @import "variables";
- 
+
+// ------ Mixin -------
+@mixin flex-justify-center {
+    display: flex;
+    justify-content: center;
+}
+@mixin standard-font-size {
+    font-size: $text-font-size;
+    letter-spacing: $text-font-spacing;
+    font-family: $text-font;
+}
 // ------ General CSS rules -------
 body {
-    font-family: $text-font;
-    font-size: $text-font-size;
+    @include standard-font-size;
     color: $fonts-color;
     background-color: $body-color;
-    letter-spacing: $text-font-spacing;
 }
 section {
   margin: 25px 0px 0px 0px;
@@ -22,6 +30,7 @@ input,textarea {
 a {
   text-decoration: none;
 }
+// ------ Header section CSS rules -------
 header {
     height: $nav-height;
     position: fixed;
@@ -34,19 +43,24 @@ header {
         display: none;
     }
     nav {
-        display: flex;
-        justify-content: center;
+        @include flex-justify-center;
         align-content: center;
         width: 100%;
         height: 100%;
         ul {
             width: $width-standard-content;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
+            @include flex-justify-center;
             align-items: center;
             list-style-type: none;
             flex-wrap: wrap;
+            li:hover {
+                border-bottom: 3px solid $azure-radiance;
+            }
+            li:hover > ul {
+                top: 0;
+                margin-top: $nav-height;
+                max-width: 20%;
+            }
             li {
                 padding-right: 4%;
                 height: 100%;
@@ -58,12 +72,13 @@ header {
                     align-items: flex-start;
                     background-color: $header-color;
                     z-index: 1;
-                    right: -100%;
+                    top: -100%;
                     box-shadow: 0 2px 4px 0 $standard-shadow;
+                    li {
+                        width: 100%;
+                        padding: 1vw;
+                    }
                 }
-            }
-            .logo {
-                padding-right: 10%;
             }
             .content-avatar {
                 display: flex;
@@ -73,8 +88,7 @@ header {
                 flex-wrap: wrap;
                 padding: 0px;
                 span {
-                    display: flex;
-                    justify-content: center;
+                    @include flex-justify-center;
                     align-items: center;
                     width: 25px;
                     height: 25px;
@@ -84,6 +98,379 @@ header {
                     color: $header-color;
                 }
             }
+            .content-avatar:hover {
+                border-bottom: none;
+            }
+            .logo {
+                padding-right: 10%;
+            }
+            .logo:hover{
+                border-bottom: none;
+            }
         }
+    }
+}
+// ------ Welcome section CSS rules -------
+.welcome {
+    @include flex-justify-center;
+    font-size: 14px;
+    margin-top: calc(25px + #{$nav-height});
+    div {
+        width: $width-standard-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13px 21px 13px 18px;
+        background-color: $welcome-color;
+        letter-spacing: -0.08px;
+        line-height: 19px;
+        font-size: 14px;
+        span {
+            @include flex-justify-center;
+            align-items: center;
+            font-size: 12px;
+            background-color: $grey-dark-1;
+            border-radius: 50%;
+            height: 17px;
+            width: 17px;
+            color: $light-silver;
+            padding: 2px;
+            cursor: pointer;
+        }
+        .btn-close {
+            border: none;
+            background-color: transparent;
+        }
+    }
+}
+// ------ Welcome section CSS rules when close section -------
+.welcome-inactive {
+    display: none;
+}
+.title-top-news {
+    @include flex-justify-center;
+    transition: all 300ms;
+    div {
+        display: flex;
+        width: $width-standard-content;
+        align-items: center;
+        font-size: 30px;
+        letter-spacing: -0.16px;
+        line-height: 41px;
+    }
+}
+// ------  Top news title section CSS rules -------
+.title-top-news-without-welcome-section {
+    margin-top: calc(25px + #{$nav-height});
+}
+// ------  Top news section CSS rules -------
+.top-news {
+    @include flex-justify-center;
+    flex-wrap: wrap;
+    .tops-news-container {
+        display: grid;
+        width: $width-standard-content;
+        grid-template-columns: repeat(2, 33vw);
+        column-gap: 4vw;
+        row-gap: 110px;
+        font-size: 21px;
+        letter-spacing: -0.11px;
+        line-height: 28px;
+        background-color: $header-color;
+        padding-bottom: 3%;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+        .news-item {
+            display: flex;
+            justify-self: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: $articles-width;
+            padding: 10% 0px 0px 0px;
+            h3 {
+                font-weight: 600;
+                margin: 20px 0px 20px 0px;
+            }
+            p {
+                @include standard-font-size;
+                line-height: 22px;
+            }
+            img {
+                width: 100%;
+            }
+            .news-item-image {
+                text-align: center;
+            }
+        }
+    }
+}
+// ------  Button section "View more stories"   CSS rules -------
+.view-more-stories {
+    @include flex-justify-center;
+    margin: 34px 0px 81px 0px;
+    button {
+        color: $header-color;
+        height: 40px;
+        width: 171px;
+        border: 1px solid $azure-radiance;
+        border-radius: 2px;
+        background-color: $azure-radiance;
+    }
+}
+// ------  Banner section CSS rules -------
+.subscribe img {
+    width: 100%;
+}
+// ------  Section title Contact us -------
+.title-contact-us {
+    font-size: 30px;
+    letter-spacing: -0.16px;
+    line-height: 41px;
+    text-align: center;
+    margin: 63px 0px 23px;
+}
+// ------ Form Contact us -------
+.form-contact-us {
+    @include flex-justify-center;
+    h4 {
+        font-size: 13px;
+        letter-spacing: -0.07px;
+        line-height: 18px;
+        color: $grey-dark-1;
+        margin-bottom: 4.5px;
+    }
+    #first_name {
+        grid-area: first_name;
+    }
+    #last_name {
+    grid-area: last_name;
+    }
+    #email {
+        grid-area: email;
+    }
+    #phone_number {
+        grid-area: phone_number;
+    }
+    #description {
+        grid-area: description;
+    }
+    #check_send_email {
+        display: inline-block;
+        @include standard-font-size;
+        line-height: 22px;
+        grid-area: check_send_email;
+        margin-bottom: 54px;
+        input {
+            box-sizing: border-box;
+            height: 21px;
+            width: 21px;
+            border: 2px solid $checkbox-color;
+            border-radius: 2px;
+        }
+    }
+    #submit {
+        grid-area: submit;
+        text-align: center;
+        button {
+            color: $header-color;
+            height: 40px;
+            width: 171px;
+            border: 1px solid $azure-radiance;
+            border-radius: 2px;
+            background-color: $azure-radiance;
+        }
+    }
+    form {
+        width: $width-standard-content;
+        padding: 46px 29px 46px 29px;
+        margin-bottom: 106px;
+        background-color: $header-color;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(2, calc(30vw - 29px)); //Build function to calculate
+        column-gap: 5vh;
+        row-gap: 46px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+        grid-template-areas:
+          "first_name last_name"
+          "email phone_number"
+          "description description"
+          "check_send_email check_send_email"
+          "submit submit";
+    }
+}
+// ------  General information modal -------
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: $modal-shadow;
+    .modal-content {
+        background-color: $body-color;
+        margin: 20% auto;
+        padding: 20px;
+        width: 80%;
+        height: 40%;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+        border-radius: 10px;
+        font-size: 30px;
+        line-height: 41px;
+        .close {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .general-information {
+            padding: 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+@media (max-width: 1370px) {
+    header nav ul li:hover > ul {
+        top: 0;
+        margin-top: 5vh;
+        max-width: 25%;
+    }
+    .top-news .tops-news-container {
+        display: grid;
+        width: $width-standard-content;
+        grid-template-columns: 100%;
+        column-gap: 10vw;
+        row-gap: 110px;
+        font-size: 21px;
+        letter-spacing: -0.11px;
+        line-height: 28px;
+        background-color: $header-color;
+        .news-item {
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            width: 70%;
+            padding: 10% 0px 0px 0px;
+        }
+    }
+}
+@media (max-width: 600px) {
+    h3 {
+        font-weight: 600px;
+        padding: 3%;
+    }
+    p {
+        padding: 4%;
+    }
+    header {
+        .burger {
+            width: 100%;
+            display: block;
+            .btn-menu {
+                display: block;
+                padding: 22px;
+                background-color: $header-color;
+                span {
+                    color: $fonts-color;
+                }
+            }
+        }
+        nav {
+            background-color: $header-color;
+            width: $width-standard-content;
+            position: fixed;
+            transition: all 300ms;
+            left: -100%;
+            box-shadow: 0 2px 2px 0 $standard-shadow;
+            ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                li {
+                    height: 5vh;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    padding: 3vw;
+                    ul {
+                        position: relative;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        background-color: $header-color;
+                        z-index: 1;
+                        left: -99999em;
+                        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+                        li {
+                            padding: 3vw;
+                        }
+                    }
+                }
+                li:hover > ul {
+                    left: 0px;
+                    margin-top: 15.2vh;
+                    max-width: 80%;
+                }
+                li:last-child {
+                    display: none;
+                }
+            }
+        }
+    }
+    .nav-active {
+      left: 0;
+    }
+    .top-news .tops-news-container {
+        display: grid;
+        width: $width-standard-content;
+        grid-template-columns: 100%;
+        column-gap: 10vw;
+        row-gap: 110px;
+        font-size: 21px;
+        letter-spacing: -0.11px;
+        line-height: 28px;
+        .news-item {
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            width: 100%;
+            padding: 10% 0px 0px 0px;
+        }
+        .news-item-image {
+            text-align: center;
+            img {
+                width: 60%;
+            }
+        }
+    }
+    .modal .modal-content {
+        font-size: 20px;
+        line-height: 41px;
+    }
+    .form-contact-us form {
+      width: $width-standard-content;
+      padding: 4% 0px 4% 0px;
+      margin-bottom: 106px;
+      background-color: $header-color;
+      display: grid;
+      grid-template-columns: calc(#{$width-standard-content} - 29px);
+      justify-content: center;
+      column-gap: 5vh;
+      row-gap: 46px;
+      grid-template-areas:
+        "first_name"
+        "last_name"
+        "email"
+        "phone_number"
+        "description"
+        "check_send_email"
+        "submit";
     }
 }
