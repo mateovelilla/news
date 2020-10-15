@@ -11,6 +11,11 @@
     letter-spacing: $text-font-spacing;
     font-family: $text-font;
 }
+@mixin box-shadow ($shadows...) {
+    box-shadow: $shadows;
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+}
 // ------ General CSS rules -------
 body {
     @include standard-font-size;
@@ -32,12 +37,12 @@ a {
 }
 // ------ Header section CSS rules -------
 header {
+    @include box-shadow(0 2px 2px 0 $standard-shadow);
     height: $nav-height;
     position: fixed;
     overflow: hidden;
     width: 100%;
     top: 0;
-    box-shadow: 0 2px 2px 0 $standard-shadow;
     background-color: $header-color;
     .burger {
         display: none;
@@ -67,13 +72,13 @@ header {
                 display: flex;
                 align-items: center;
                 ul {
+                    @include box-shadow(0 2px 4px 0 $standard-shadow);
                     position: fixed;
                     flex-direction: column;
                     align-items: flex-start;
                     background-color: $header-color;
                     z-index: 1;
                     top: -100%;
-                    box-shadow: 0 2px 4px 0 $standard-shadow;
                     li {
                         width: 100%;
                         padding: 1vw;
@@ -168,6 +173,7 @@ header {
     @include flex-justify-center;
     flex-wrap: wrap;
     .tops-news-container {
+        @include box-shadow(0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04));
         display: grid;
         width: $width-standard-content;
         grid-template-columns: repeat(2, 33vw);
@@ -178,7 +184,6 @@ header {
         line-height: 28px;
         background-color: $header-color;
         padding-bottom: 3%;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
         .news-item {
             display: flex;
             justify-self: center;
@@ -280,6 +285,7 @@ header {
         }
     }
     form {
+        @include box-shadow(0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04));
         width: $width-standard-content;
         padding: 46px 29px 46px 29px;
         margin-bottom: 106px;
@@ -289,7 +295,6 @@ header {
         grid-template-columns: repeat(2, calc(30vw - 29px)); //Build function to calculate
         column-gap: 5vh;
         row-gap: 46px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
         grid-template-areas:
           "first_name last_name"
           "email phone_number"
@@ -310,12 +315,12 @@ header {
     overflow: auto;
     background-color: $modal-shadow;
     .modal-content {
+        @include box-shadow( 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04));
         background-color: $body-color;
         margin: 20% auto;
         padding: 20px;
         width: 80%;
         height: 40%;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
         border-radius: 10px;
         font-size: 30px;
         line-height: 41px;
@@ -384,12 +389,12 @@ header {
             }
         }
         nav {
+            @include box-shadow(0 2px 2px 0 $standard-shadow);
             background-color: $header-color;
             width: $width-standard-content;
             position: fixed;
             transition: all 300ms;
             left: -100%;
-            box-shadow: 0 2px 2px 0 $standard-shadow;
             ul {
                 display: flex;
                 flex-direction: column;
@@ -401,13 +406,13 @@ header {
                     align-items: center;
                     padding: 3vw;
                     ul {
+                        @include box-shadow(0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04));
                         position: relative;
                         flex-direction: column;
                         align-items: flex-start;
                         background-color: $header-color;
                         z-index: 1;
                         left: -99999em;
-                        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04);
                         li {
                             padding: 3vw;
                         }
