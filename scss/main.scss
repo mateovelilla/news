@@ -13,7 +13,6 @@
 }
 @mixin box-shadow ($shadows...) {
     box-shadow: $shadows;
-    -moz-box-shadow: $shadows;
     -webkit-box-shadow: $shadows;
 }
 // ------ General CSS rules -------
@@ -31,9 +30,13 @@ input,textarea {
   border-radius: $input-border-radius;
   height: $input-height;
   width: $input-width;
+  padding: 10px;
 }
 a {
   text-decoration: none;
+}
+button {
+    cursor: pointer;
 }
 // ------ Header section CSS rules -------
 header {
@@ -120,7 +123,7 @@ header {
 // ------ Welcome section CSS rules -------
 .welcome {
     @include flex-justify-center;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: calc(25px + #{$nav-height});
     div {
         width: $width-standard-content;
@@ -178,36 +181,48 @@ header {
         @include box-shadow(0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.04));
         display: grid;
         width: $width-standard-content;
-        grid-template-columns: repeat(2, 33vw);
-        column-gap: 4vw;
-        row-gap: 110px;
+        grid-template-columns: repeat(2, auto);
+        column-gap: 2vw;
+        row-gap: 2vh;
         font-size: 21px;
         letter-spacing: -0.11px;
         line-height: 28px;
         background-color: $header-color;
-        padding-bottom: 3%;
-        .news-item {
-            display: flex;
-            justify-self: center;
-            flex-wrap: wrap;
-            flex-direction: column;
-            width: $articles-width;
-            padding: 10% 0px 0px 0px;
-            h3 {
-                font-weight: 600;
-                margin: 20px 0px 20px 0px;
-            }
-            p {
-                @include standard-font-size;
-                line-height: 22px;
-            }
-            img {
-                width: 100%;
-            }
-            .news-item-image {
-                text-align: center;
+        padding: 41px 29px;
+        justify-items: center;
+        .news-item-a {
+            cursor: pointer;
+            margin-bottom: 1vh;
+            .news-item {
+                display: flex;
+                justify-self: center;
+                flex-wrap: wrap;
+                flex-direction: column;
+                width: $articles-width;
+                h3 {
+                    font-weight: 600;
+                    margin: 20px 0px 20px 0px;
+                }
+                p {
+                    @include standard-font-size;
+                    line-height: 22px;
+                }
+                img {
+                    width: 403px;
+                    height: 226.69px;
+                }
+                .news-item-image {
+                    text-align: center;
+                }
             }
         }
+        .news-item-a:hover {
+            -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.36);
+            -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.36);
+            box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.36);
+            border-radius: 4px;
+        }
+   
     }
 }
 // ------  Button section "View more stories"   CSS rules -------
@@ -236,6 +251,15 @@ header {
     margin: 63px 0px 23px;
 }
 // ------ Form Contact us -------
+.error-enable{
+    display: block;
+    color: $error-color;
+    margin-top: 10px;
+    font-size: 12px;
+}
+.error-disable {
+    display: none;
+}
 .form-contact-us {
     @include flex-justify-center;
     h4 {
@@ -243,7 +267,7 @@ header {
         letter-spacing: -0.07px;
         line-height: 18px;
         color: $grey-dark-1;
-        margin-bottom: 4.5px;
+        margin-bottom: 10px;
     }
     #first_name {
         grid-area: first_name;
@@ -440,26 +464,53 @@ header {
     .nav-active {
       left: 0;
     }
+    // ------ Welcome section CSS rules -------
+    .welcome {
+        margin-top: calc(25px + #{$nav-height-xs});
+        div {
+            width: $width-xs-standard-content;
+        }
+    }
+    // ------  Top news title section CSS rules -------
+    .title-top-news div {
+        width: $width-xs-standard-content;
+    }
+    .title-top-news-without-welcome-section {
+        margin-top: calc(25px + #{$nav-height-xs});
+    }
     .top-news .tops-news-container {
         display: grid;
-        width: $width-standard-content;
+        width: $width-xs-standard-content;
         grid-template-columns: 100%;
         column-gap: 10vw;
         row-gap: 110px;
         font-size: 21px;
         letter-spacing: -0.11px;
         line-height: 28px;
-        .news-item {
-            display: flex;
-            flex-direction: column;
-            justify-self: center;
-            width: 100%;
-            padding: 10% 0px 0px 0px;
-        }
-        .news-item-image {
-            text-align: center;
-            img {
-                width: 60%;
+        .news-item-a {
+            cursor: pointer;
+            margin-bottom: 1vh;
+            .news-item {
+                display: flex;
+                justify-self: center;
+                flex-wrap: wrap;
+                flex-direction: column;
+                width: 100% ;
+                h3 {
+                    font-weight: 600;
+                    margin: 20px 0px 20px 0px;
+                }
+                p {
+                    @include standard-font-size;
+                    line-height: 22px;
+                }
+                img {
+                    width: 100%;
+                    height: 226.69px;
+                }
+                .news-item-image {
+                    text-align: center;
+                }
             }
         }
     }
@@ -469,12 +520,12 @@ header {
         height: 70%;
     }
     .form-contact-us form {
-      width: $width-standard-content;
+      width: $width-xs-standard-content;
       padding: 4% 0px 4% 0px;
       margin-bottom: 106px;
       background-color: $header-color;
       display: grid;
-      grid-template-columns: calc(#{$width-standard-content} - 29px);
+      grid-template-columns: calc(#{$width-xs-standard-content} - 29px);
       justify-content: center;
       column-gap: 5vh;
       row-gap: 46px;
