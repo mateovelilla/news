@@ -41,7 +41,7 @@ button {
 // ------ Header section CSS rules -------
 header {
     @include box-shadow(0 2px 2px 0 $standard-shadow);
-    height: $nav-height;
+    min-height: $nav-height;
     position: fixed;
     overflow: hidden;
     width: 100%;
@@ -53,10 +53,8 @@ header {
     }
     nav {
         @include flex-justify-center;
-        @include box-shadow(0 2px 2px 0 $standard-shadow);
-        align-content: center;
         width: 100%;
-        height: 100%;
+        min-height: $nav-height;
         ul {
             width: $width-standard-content;
             @include flex-justify-center;
@@ -66,13 +64,18 @@ header {
             li:hover {
                 border-bottom: 3px solid $azure-radiance;
             }
-            li:hover > ul {
+            li:hover> ul {
                 top: 0;
-                margin-top: $nav-height;
+                margin-top: $nav-height ;
+                max-width: 20%;
+            }
+            li:focus > ul {
+                top: 0;
+                margin-top: $nav-height ;
                 max-width: 20%;
             }
             li {
-                padding-right: 4%;
+                margin-right: 4%;
                 height: 100%;
                 display: flex;
                 align-items: center;
@@ -182,8 +185,8 @@ header {
         display: grid;
         width: $width-standard-content;
         grid-template-columns: repeat(2, auto);
-        column-gap: 2vw;
-        row-gap: 2vh;
+        column-gap: 40px;
+        row-gap: 60px;
         font-size: 21px;
         letter-spacing: -0.11px;
         line-height: 28px;
@@ -216,7 +219,7 @@ header {
                 }
             }
         }
-        .news-item-a:hover {
+        article:hover {
             -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.36);
             -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.36);
             box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.36);
@@ -368,18 +371,24 @@ header {
         }
     }
 }
-@media (max-width: 1370px) {
+@media only screen and (max-width:1440) {
+    .top-news .tops-news-container {
+        column-gap: 76px;
+        row-gap: 110px;
+    }
+}
+@media only screen and ( max-width: 1365px) {
     header nav ul li:hover > ul {
         top: 0;
-        margin-top: 5vh;
-        max-width: 25%;
+        margin-top: $nav-height ;
+        max-width: 20%;
     }
     .top-news .tops-news-container {
         display: grid;
         width: $width-standard-content;
         grid-template-columns: 100%;
-        column-gap: 10vw;
-        row-gap: 110px;
+        column-gap: 10px;
+        row-gap: 40px;
         font-size: 21px;
         letter-spacing: -0.11px;
         line-height: 28px;
@@ -393,7 +402,7 @@ header {
         }
     }
 }
-@media (max-width: 600px) {
+@media only screen and(max-width: 960px) {
     h3 {
         font-weight: 600px;
         padding: 3%;
@@ -402,7 +411,7 @@ header {
         padding: 4%;
     }
     header {
-        height: $nav-height-xs;
+        min-height: $nav-height-xs;
         .burger {
             width: 100%;
             display: block;
@@ -421,6 +430,7 @@ header {
             position: fixed;
             transition: all 300ms;
             left: -100%;
+            height: 100%;
             ul {
                 display: flex;
                 flex-direction: column;
@@ -466,7 +476,8 @@ header {
     }
     // ------ Welcome section CSS rules -------
     .welcome {
-        margin-top: calc(25px + #{$nav-height-xs});
+        margin-top: calc(25px + #{$nav-height-xs}); // 80px (size nav element) + 25px (spacing)
+        
         div {
             width: $width-xs-standard-content;
         }
@@ -482,8 +493,8 @@ header {
         display: grid;
         width: $width-xs-standard-content;
         grid-template-columns: 100%;
-        column-gap: 10vw;
-        row-gap: 110px;
+        column-gap: 20px;
+        row-gap: 40px;
         font-size: 21px;
         letter-spacing: -0.11px;
         line-height: 28px;

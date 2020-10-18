@@ -21,162 +21,162 @@
 		<link rel="stylesheet" href="./css/main.css" />
 	</head>
 	<body>
-		<article>
-			<header>
-				<div class="burger">
-					<a class="btn-menu">
-						<span class="material-icons"> menu </span>
-					</a>
+		<header>
+			<div class="burger">
+				<a class="btn-menu">
+					<span class="material-icons"> menu </span>
+				</a>
+			</div>
+			<nav>
+				<ul>
+					<li class="logo" tabindex="0">
+						<a href="#">
+							<img
+								src="./assets/images/logo.svg"
+								sizes="(max-width:500px) 25vw, 50vw"
+								alt="News"
+							/>
+						</a>
+					</li>
+					<li tabindex="0">
+						<a href="#">Sections </a>
+						<span class="material-icons">keyboard_arrow_down</span>
+						<ul>
+							<li tabindex="0">
+								<span class="material-icons"> sports </span>
+								<a href="#">Sports</a>
+							</li>
+							<li tabindex="0">
+								<span class="material-icons"> casino </span>
+								<a href="#">Entertainment</a>
+							</li>
+							<li tabindex="0">
+								<span class="material-icons"> attach_money </span>
+								<a href="#">Economics</a>
+							</li>
+							<li tabindex="0">
+								<span class="material-icons">developer_board </span>
+								<a href="#">Technology</a>
+							</li>
+						</ul>
+					</li>
+					<li tabindex="0"><a href="#">Editorial</a></li>
+					<li tabindex="0"><a href="#title-contact-us">Contact us</a></li>
+					<li class="content-avatar">
+						<span class="avatar">js</span>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<section class="welcome">
+			<div>
+				Welcome to the new look of News.com. Keep scrolling to discover
+				interesting new features and news.
+				<button class="btn-close" tabindex="0">
+					<span class="material-icons"> close </span>
+				</button>
+			</div>
+		</section>
+		<section class="title-top-news">
+			<div>
+				<h2>Top news</h2>
+			</div>
+		</section>
+		<section class="top-news">
+			<div class="tops-news-container"></div>
+		</section>
+		<section class="view-more-stories">
+			<button class="btn_view_more_stories" tabindex="0">
+				View more stories
+			</button>
+		</section>
+		<section class="subscribe">
+			<img src="./assets/images/subscribe.jpg" alt="subscribe" />
+		</section>
+		<section class="title-contact-us" id="title-contact-us">
+			<h3>Contact Us</h3>
+		</section>
+		<section class="form-contact-us">
+			<form action="#" id="contact-form">
+				<div id="first_name">
+					<h4>First name</h4>
+					<input type="text" name="First_name" required />
+					<div class="error-disable">
+						<span>First name is required!</span>
+					</div>
 				</div>
-				<nav>
-					<ul>
-						<li class="logo">
-							<a href="#">
-								<img
-									src="./assets/images/logo.svg"
-									sizes="(max-width:500px) 25vw, 50vw"
-									alt="News"
-								/>
-							</a>
-						</li>
-						<li>
-							<a href="#">Sections </a>
-							<span class="material-icons">keyboard_arrow_down</span>
-							<ul>
-								<li>
-									<span class="material-icons"> sports </span>
-									<a href="#">Sports</a>
-								</li>
-								<li>
-									<span class="material-icons"> casino </span>
-									<a href="#">Entertainment</a>
-								</li>
-								<li>
-									<span class="material-icons"> attach_money </span>
-									<a href="#">Economics</a>
-								</li>
-								<li>
-									<span class="material-icons">developer_board </span>
-									<a href="#">Technology</a>
-								</li>
-							</ul>
-						</li>
-						<li><a href="#">Editorial</a></li>
-						<li><a href="#title-contact-us">Contact us</a></li>
-						<li class="content-avatar">
-							<span class="avatar">js</span>
-						</li>
-					</ul>
-				</nav>
-			</header>
-			<section class="welcome">
-				<div>
-					Welcome to the new look of News.com. Keep scrolling to discover
-					interesting new features and news.
-					<button class="btn-close">
-						<span class="material-icons"> close </span>
-					</button>
+				<div id="last_name">
+					<h4>Last name</h4>
+					<input type="text" id="last_name" name="Last_name" required />
+					<div class="error-disable">
+						<span>Last name is required!</span>
+					</div>
 				</div>
-			</section>
-			<section class="title-top-news">
-				<div>
-					<h2>Top news</h2>
+				<div id="email">
+					<h4>Email</h4>
+					<input type="text" name="Email" required />
+					<div class="error-disable">
+						<span>Email is required!</span>
+					</div>
+					<div class="error-disable">
+						<span>Email is not valid!</span>
+					</div>
 				</div>
-			</section>
-			<section class="top-news">
-				<div class="tops-news-container"></div>
-			</section>
-			<section class="view-more-stories">
-				<button class="btn_view_more_stories">View more stories</button>
-			</section>
-			<section class="subscribe">
-				<img src="./assets/images/subscribe.jpg" alt="subscribe" />
-			</section>
-			<section class="title-contact-us" id="title-contact-us">
-				<h3>Contact Us</h3>
-			</section>
-			<section class="form-contact-us">
-				<form action="#" id="contact-form">
-					<div id="first_name">
-						<h4>First name</h4>
-						<input type="text" name="First_name" required />
-						<div class="error-disable">
-							<span>First name is required!</span>
-						</div>
+				<!-- https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_tel -->
+				<div id="phone_number">
+					<h4>Phone number</h4>
+					<input name="phone" placeholder="123-456-67-89" required />
+					<div class="error-disable">
+						<span>Phone number is required!</span>
 					</div>
-					<div id="last_name">
-						<h4>Last name</h4>
-						<input type="text" id="last_name" name="Last_name" required />
-						<div class="error-disable">
-							<span>Last name is required!</span>
-						</div>
+					<div class="error-disable">
+						<span>Phone number is not valid!</span>
 					</div>
-					<div id="email">
-						<h4>Email</h4>
-						<input type="text" name="Email" required />
-						<div class="error-disable">
-							<span>Email is required!</span>
-						</div>
-						<div class="error-disable">
-							<span>Email is not valid!</span>
-						</div>
+				</div>
+				<div id="description">
+					<h4>Description</h4>
+					<textarea name="description" required></textarea>
+					<div class="error-disable">
+						<span>Description is required!</span>
 					</div>
-					<!-- https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_tel -->
-					<div id="phone_number">
-						<h4>Phone number</h4>
-						<input name="phone" placeholder="123-456-67-89" required />
-						<div class="error-disable">
-							<span>Phone number is required!</span>
-						</div>
-						<div class="error-disable">
-							<span>Phone number is not valid!</span>
-						</div>
+				</div>
+				<div id="check_send_email">
+					<input type="checkbox" checked="checked" required />
+					Send me emails about breaking news and promotions.
+					<div class="error-disable">
+						<span>this field is required!</span>
 					</div>
-					<div id="description">
-						<h4>Description</h4>
-						<textarea name="description" required></textarea>
-						<div class="error-disable">
-							<span>Description is required!</span>
-						</div>
+				</div>
+				<div id="submit" tabindex="0">
+					<button>Submit form</button>
+				</div>
+			</form>
+		</section>
+		<!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
+		<div id="modal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h4>Information to send</h4>
+				<div class="general-information">
+					<div>
+						<span>Name:</span>
+						<span id="modal_name"></span>
 					</div>
-					<div id="check_send_email">
-						<input type="checkbox" checked="checked" required />
-						Send me emails about breaking news and promotions.
-						<div class="error-disable">
-							<span>this field is required!</span>
-						</div>
+					<div>
+						<span>Email:</span>
+						<span id="modal_email"></span>
 					</div>
-					<div id="submit">
-						<button>Submit form</button>
+					<div>
+						<span>Phone Number:</span>
+						<span id="modal_phone_number"></span>
 					</div>
-				</form>
-			</section>
-			<!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
-			<div id="modal" class="modal">
-				<div class="modal-content">
-					<span class="close">&times;</span>
-					<h4>Information to send</h4>
-					<div class="general-information">
-						<div>
-							<span>Name:</span>
-							<span id="modal_name"></span>
-						</div>
-						<div>
-							<span>Email:</span>
-							<span id="modal_email"></span>
-						</div>
-						<div>
-							<span>Phone Number:</span>
-							<span id="modal_phone_number"></span>
-						</div>
-						<div>
-							<span>Description:</span>
-							<span id="modal_description"></span>
-						</div>
+					<div>
+						<span>Description:</span>
+						<span id="modal_description"></span>
 					</div>
 				</div>
 			</div>
-		</article>
+		</div>
 	</body>
 </html>
 <script type="text/javascript">
@@ -198,6 +198,7 @@
 		modal_phone_number = document.getElementById('modal_phone_number'),
 		modal_description = document.getElementById('modal_description'),
 		news_template = (urlToImage, title, content, link) => {
+			const article = document.createElement('article');
 			const anchor = document.createElement('a');
 			const container = document.createElement('div');
 			const content_img = document.createElement('div');
@@ -212,12 +213,14 @@
 			img.src = urlToImage ? urlToImage : './assets/images/img-not-found.png';
 			anchor.href = link;
 			anchor.target = '_blank';
+			article.setAttribute('tabindex', '0');
 			content_img.appendChild(img);
 			container.appendChild(content_img);
 			container.appendChild(title_h3);
 			container.appendChild(content_p);
 			anchor.appendChild(container);
-			return anchor;
+			article.appendChild(anchor);
+			return article;
 		},
 		viewMoreStories = async () => {
 			try {
