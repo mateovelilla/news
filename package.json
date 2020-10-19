@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "eslint public/js/index.js",
     "build:sass": "sass ./scss/main.scss ./public/css/main.css",
     "watch:sass": "sass --watch ./scss/main.scss ./public/css/main.css",
     "start": "npm run build:sass && http-server"
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mateovelilla/news#readme",
   "devDependencies": {
+    "eslint": "^7.11.0",
     "sass": "^1.27.0"
   },
   "dependencies": {
